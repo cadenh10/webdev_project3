@@ -52,13 +52,15 @@ section {
   border-radius: 12px; 
   padding: 1rem; 
   margin: 1rem 0; 
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
 #page-wrapper {
   max-width: 90%;
   margin: 0 auto;
-  box-shadow: 0px 4px 8px 2px rgba(0, 0, 0, 1);
+  -webkit-box-shadow: 0px 4px 8px 2px rgba(0, 0, 0, 1);
+          box-shadow: 0px 4px 8px 2px rgba(0, 0, 0, 1);
   border-radius: 12px 12px 0 0;
   background-color: white;
   padding: 1em;
@@ -73,7 +75,9 @@ section {
 #header h1 {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
   top: 5px;
   font-size: 3rem;
   font-family: 'Devonshire', cursive;
@@ -192,8 +196,11 @@ iframe {
 }
 
 #main-nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-around;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 section {
@@ -235,8 +242,13 @@ section {
   }
   
   #main-nav ul {
-    flex-direction: column;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   
   section h2 {
@@ -265,14 +277,17 @@ section {
 .slide-image {
   width: 100%;
   height: auto;
-  object-fit: contain; 
+  -o-object-fit: contain;
+     object-fit: contain; 
   display: none; 
 }
 
 button {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
@@ -286,12 +301,4 @@ button {
 
 .next-slide {
   right: 10px;
-}
-
-.leaflet-container img.leaflet-tile {
-  mix-blend-mode: normal !important;
-}
-
-.lvml {
-  display: none !important;
 }
