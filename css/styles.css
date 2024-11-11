@@ -287,3 +287,11 @@ button {
 .next-slide {
   right: 10px;
 }
+
+.leaflet-container img.leaflet-tile {
+  mix-blend-mode: normal !important;
+}
+
+.lvml {
+  display: none !important;
+}
