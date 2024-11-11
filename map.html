@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Map</title>
+  <link rel="stylesheet" type="text/css" href="css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="js/script.js" defer></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+  <div id="title-bar">
+    <h1>My Portfolio</h1>
+  </div>
+  <nav id="main-nav">
+    <ul>
+      <li><a href="index.html">Introduction</a></li>
+      <li><a href="hobbies.html">Hobbies</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="map.html">Map</a></li>
+    </ul>
+  </nav>
+
+  <section>
+    <h2>My Favorite Places Map</h2>
+    <p>Explore some of my favorite places on this interactive map below!</p>
+    <div id="map" style="height: 500px; width: 100%;"></div>
+  </section>
+
+  <script>
+    var map = L.map('map').setView([37.7749, -122.4194], 10);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    L.marker([37.7749, -122.4194]).addTo(map)
+      .bindPopup('This is San Francisco!')
+      .openPopup();
+
+    L.marker([34.0522, -118.2437]).addTo(map)
+      .bindPopup('This is Los Angeles!');
+    </script>
+</body>
+</html>
