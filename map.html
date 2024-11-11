@@ -23,8 +23,8 @@
   </nav>
 
   <section>
-    <h2>My Favorite Places Map</h2>
-    <p>Explore some of my favorite places on this interactive map below!</p>
+    <h2>My Travel Map</h2>
+    <p>Explore some of my favorite places to visit!</p>
     <div id="map" style="height: 500px; width: 100%;"></div>
   </section>
 
@@ -42,6 +42,12 @@
 
     L.marker([34.0522, -118.2437]).addTo(map)
       .bindPopup('This is Los Angeles!');
+	  
+	L.marker([37.5503, -126.9971]).addTo(map)
+      .bindPopup('This is Seoul!');
+	  
+	L.marker([35.1495, 90.0490]).addTo(map)
+      .bindPopup('This is Memphis!');
   </script>
 </body>
 </html>
