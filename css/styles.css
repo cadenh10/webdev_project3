@@ -255,3 +255,32 @@ section {
   }
 }
 
+.slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.slide-image {
+  max-width: 80%;
+  max-height: 300px;
+  display: none;
+}
+
+.prev-slide,
+.next-slide {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.prev-slide:hover,
+.next-slide:hover {
+  background-color: #0056b3;
+}
