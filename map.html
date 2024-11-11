@@ -2,12 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Map</title>
-  <link rel="stylesheet" type="text/css" href="css/normalize.css">
-  <link rel="stylesheet" type="text/css" href="css/styles.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Maps</title>
+  <link rel="stylesheet" href="css/styles.css">
   <script src="js/script.js" defer></script>
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
 <body>
   <div id="title-bar">
@@ -18,36 +16,57 @@
       <li><a href="index.html">Introduction</a></li>
       <li><a href="hobbies.html">Hobbies</a></li>
       <li><a href="resume.html">Resume</a></li>
-      <li><a href="map.html">Map</a></li>
+	  <li><a href="map.html">Map</a></li>
     </ul>
   </nav>
-
-  <section>
-    <h2>My Travel Map</h2>
-    <p>Explore some of my favorite places to visit!</p>
-    <div id="map" style="height: 500px; width: 100%;"></div>
-  </section>
-
+  
+  <div class="map-container">
+    <div id="map"></div>
+  </div>
+  
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvlezdn_3zUXWs4JD6dFSJUQYUVF937mM&callback=initMap" async defer></script>
   <script>
-    var map = L.map('map').setView([37.7749, -122.4194], 10);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
-
-    L.marker([37.7749, -122.4194]).addTo(map)
-      .bindPopup('This is San Francisco!')
-      .openPopup();
-
-    L.marker([34.0522, -118.2437]).addTo(map)
-      .bindPopup('This is Los Angeles!');
-	  
-	L.marker([37.5503, 126.9971]).addTo(map)
-      .bindPopup('This is Seoul!');
-	  
-	L.marker([35.1495, -90.0490]).addTo(map)
-      .bindPopup('This is Memphis!');
+    let map;
+  
+    function initMap() {
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: 41.85003, lng: -87.65005 },
+        zoom: 12,
+      });
+  
+      const marker = new google.maps.Marker({
+        position: { lat: 41.85003, lng: -87.65005 },
+        map: map,
+        title: "Chicago",
+      });
+  
+      const infoWindow = new google.maps.InfoWindow({
+        content: "<h3>Chicago</h3><p>This is the city I live in!</p>",
+      });
+  
+      marker.addListener("click", () => {
+        infoWindow.open(map, marker);
+      });
+  
+      const centerControlDiv = document.createElement("div");
+      const centerControl = createCenterControl(centerControlDiv, map, marker);
+      map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControlDiv);
+    }
+  
+    function createCenterControl(controlDiv, map, marker) {
+      const controlUI = document.createElement("div");
+      controlUI.classList.add("custom-control");
+      controlUI.title = "Click to center the map on the marker";
+      controlUI.innerText = "Center Map on Marker";
+      controlDiv.appendChild(controlUI);
+  
+      controlUI.addEventListener("click", () => {
+        map.setCenter(marker.getPosition());
+        map.setZoom(12);
+      });
+  
+      return controlUI;
+    }
   </script>
-</body>
-</html>
+  </body>
+  </html>
